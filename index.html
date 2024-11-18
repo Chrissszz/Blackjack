@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Blackjack</title>
+</head>
+<body>
+    <section id="topSection">
+        <div class="row play">
+            <button onclick="startGame()" id="playButton">Play</button>
+        </div>
+        <div class="row restart">
+            <button onclick="restartGame()" id="restartButton">Restart</button>
+        </div>
+    </section>
+    <section id="dealerSection">
+        <div class="row dealer">
+            <span>Dealer</span>
+            <span class="dealerCount"></span>
+        </div>
+        <div>
+            <p class="dealerOutcome"></p>
+            <p class="cardDisplayDealer"></p>
+        </div>
+    </section>
+    <section id="playerSection">
+        <div class="row player">
+            <span>Player</span>
+            <span class="playerCount"></span>
+        </div>
+        <div>
+            <p class="playerOutcome"></p>
+            <p class="cardDisplayPlayer"></p>
+        </div>
+    </section>
+    <section id="bottomSection">
+        <div class="row hit">
+            <button onclick="cardCount()" id="hitButton">Hit</button>
+        </div>
+        <div class="row stand">
+            <button onclick="standCount()" id="standButton">Stand</button>
+        </div>
+    </section>
+    <script src="/js/script.js"></script>
+</body>
+</html>
