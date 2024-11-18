@@ -54,7 +54,6 @@ let cardTenSpades = [10, "Ten", "Spades"];
 let cardJackSpades = [10, "Jack", "Spades"];
 let cardQueenSpades = [10, "Queen", "Spades"];
 let cardKingSpades = [10, "King", "Spades"];
-//Suits
 
 let allCards = [
     //Hearts
@@ -85,7 +84,7 @@ let standButton = document.querySelector('#standButton');
 let playerOutcome = document.querySelector('.playerOutcome');
 let dealerOutcome = document.querySelector('.dealerOutcome');
 
-function startGame() {//use a callback here so the player and dealer dont end up with the same card number
+function startGame() {
     playerStartCards();
     dealerStartCards();
     checkForTie();
@@ -100,7 +99,6 @@ function playerStartCards(){
     if (randomCard[1] === "Ace" || randomCardTwo[2] === "Ace") {
         playerAceCount++;
     }
-    // Adjust for Aces to avoid bust
     playerCount = checkForAce(playerCount, playerAceCount);
     cardOutputPlayer.innerHTML = `${randomCard[1]} of ${randomCard[2]}` + `, ${randomCardTwo[1]} of ${randomCardTwo[2]}`;
     if(playerCount === 21){
@@ -117,7 +115,6 @@ function dealerStartCards(){
     if (randomCard[1] === "Ace" || randomCardTwo[2] === "Ace") {
         dealerAceCount++;
     }
-    // Adjust for Aces to avoid bust
     dealerCount = checkForAce(dealerCount, dealerAceCount);
     cardOutputDealer.innerHTML = `${randomCard[1]} of ${randomCard[2]}` + `, ${randomCardTwo[1]} of ${randomCardTwo[2]}`;
     if(dealerCount === 21){
@@ -133,7 +130,6 @@ function cardCount() {
         if (randomCard[1] === "Ace") {
             playerAceCount++;
         }
-        // Adjust for Aces to avoid bust
         playerCount = checkForAce(playerCount, playerAceCount);
     if(playerCount === 21){
         playerOutcome.innerHTML = "You win!";
@@ -151,7 +147,6 @@ function standCount() {
         if (randomCard[1] === "Ace") {
             dealerAceCount++;
         }
-        // Adjust for Aces to avoid bust
         dealerCount = checkForAce(dealerCount, dealerAceCount);
         if(dealerCount === 21){
             dealerOutcome.innerHTML = "You win!";
@@ -195,10 +190,9 @@ function endGame() {
 }
 function checkForAce(handTotal, aceCount) {
     while (handTotal > 21 && aceCount > 0) {
-        handTotal -= 10; // Adjust Ace value from 11 to 1
+        handTotal -= 10;
         aceCount--;
     }
     return handTotal;
 }
-//i need cards suit doesnt matter ace(being 1 or 11 whichever is more beneficial for the player/dealer) through king,queen,jack(all 10's)
-//lets ignore card/suits for now and just go with numbers
+
