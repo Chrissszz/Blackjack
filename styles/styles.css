@@ -3,11 +3,12 @@ body{
     align-items: center;
     text-align: center;
     min-height: 100vh;
+    background-image: url('/images/background/171.jpg');
   }
 #topSection{
     height: auto;
     padding: 50px;
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0.199);
 }
 .row{
     display: flex;
@@ -25,17 +26,17 @@ button, span{
 #dealerSection{
     height: auto;
     padding: 50px;
-    background-color: rgb(11, 236, 67);
+    background-color: rgba(11, 236, 67, 0.219);
 }
 #playerSection{
     height: auto;
     padding: 50px;
-    background-color: rgb(247, 0, 255);
+    background-color: rgba(247, 0, 255, 0.185);
 }
 #bottomSection{
     height: auto;
     padding: 50px;
-    background-color: rgb(0, 225, 255);
+    background-color: rgba(0, 225, 255, 0.212);
 }
 button{
     width: 50px;
