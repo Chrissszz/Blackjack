@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap');
 
 body{
     justify-content: center;
@@ -12,21 +11,10 @@ body{
     height: auto;
     padding: 50px;
 }
-.row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; /*stacks the rows */
-}
-button {
-    cursor: pointer;
-    height: 50px; 
-}
-#playButton {
+button{
     flex: none;
     display: inline-block;
     color: white;
-    background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 96%, rgba(90,90,201,1) 100%);
     border: 5px solid rgba(0, 0, 0, 0.253);
     border-radius: 50%;
     width: 100px;
@@ -38,56 +26,126 @@ button {
     text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
     letter-spacing: 0.1em;
     transition: 0.5s;
+    cursor: pointer;
+}
+#playButton {
+    background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 96%, rgba(90,90,201,1) 100%); 
 }
 #playButton:hover{
     background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 96%, rgba(90,90,201,1) 100%);
-    letter-spacing: 0.10em;
+    letter-spacing: 0.15em;
     text-shadow: 3px 3px 3px #000000;
     box-shadow: 0 0 30px rgb(90, 90, 201);
     animation: blinkingBorder 1.5s linear infinite;
 }
+#restartButton{
+    background-color: gray;
+    border-radius: 15%;
+    width: 150px;
+    height: 80px;
+}
+#restartButton:hover{
+    letter-spacing: 0.15em;
+    text-shadow: 2px 2px 2px #000000;
+    box-shadow: 0 0 30px rgb(125, 125, 126);
+    animation: blinkingBorderRestart 3s linear infinite;
+}
 #hitButton {
-    flex: none;
-    display: inline-block;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px; /* Match width for a perfect circle */
-    box-sizing: border-box;
+    background: radial-gradient(circle, rgba(242,184,184,1) 10%, rgba(249,0,0,1) 56%, rgba(163,62,62,1) 79%);
+}
+#hitButton:hover{
+    letter-spacing: 0.15em;
+    text-shadow: 3px 3px 3px #000000;
+    box-shadow: 0 0 30px rgb(248, 8, 8);
+    animation: blinkingBorderHit 1.5s linear infinite;
 }
 #standButton {
-    flex: none;
-    display: inline-block;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px; /* Match width for a perfect circle */
-    box-sizing: border-box;
+    background: radial-gradient(circle, rgba(170,200,170,1) 10%, rgba(48,198,43,1) 39%, rgba(52,135,52,1) 68%);
+}
+#standButton:hover {
+    letter-spacing: 0.15em;
+    text-shadow: 3px 3px 3px #000000;
+    box-shadow: 0 0 30px rgb(68, 241, 0);
+    animation: blinkingBorderStand 1.5s linear infinite;
 }
 .dealer{
+    font-family: "Righteous", sans-serif;
+    font-size: 3em;
     width: 50%;
     margin: auto;
 }
 .player{
+    font-family: "Righteous", sans-serif;
+    font-size: 3em;
     width: 50%;
     margin: auto;
+}
+.cardDisplayPlayer{
+    font-family: "Righteous", serif;
+    font-size: 1.5em;
+}
+.cardDisplayDealer{
+    font-family: "Righteous", serif;
+    font-size: 1.5em;
+}
+.playerCount{
+    font-family: "Righteous", serif;
+    font-size: 2em;
+}
+.dealerCount{
+    font-family: "Righteous", serif;
+    font-size: 2em;
 }
 span{
     flex: 1 1 100px;
     height: 50px;
 }
+.hit{
+    margin-left: 50%;
+    padding-right: 20px;
+}
+.play{
+    margin: auto;
+}
+.stand{
+    margin-right: 50%;
+    padding-left: 20px;
+}
+.playerOutcome{
+    font-family: "Righteous", serif;
+    font-size: 6em;
+    margin: 0;
+}
+.dealerOutcome{
+    font-family: "Righteous", serif;
+    font-size: 6em;
+    margin: 0;
+}
 #dealerSection{
     height: auto;
     color: white;
-    padding: 50px;
+    
 }
 #playerSection{
     height: auto;
     color: white;
-    padding: 50px;
+    
 }
 #bottomSection{
+    display: flex;
     height: auto;
-    padding: 50px;
+    justify-content: center;
+    padding-top: 50px; 
 }
+.row{
+    flex: 1;
+    width: auto;
+    align-content: space-between;
+}
+img{
+    width: 125px;
+}
+
 /*Animations*/
 @keyframes blinkingBorder {
     0% {
@@ -95,6 +153,48 @@ span{
         border-right-color: rgb(133, 133, 190);
         border-bottom-color: rgb(139, 139, 189);
         border-left-color: rgb(141, 141, 194);
+    }
+    100% {
+        border-top-color: rgba(159, 159, 196, 0);
+        border-right-color: rgba(159, 159, 196, 0);
+        border-bottom-color: rgba(0, 255, 0, 0);
+        border-left-color: rgba(159, 159, 196, 0);
+    }
+}
+@keyframes blinkingBorderHit {
+    0% {
+        border-top-color: rgb(255, 0, 0);
+        border-right-color: rgb(255, 0, 0);
+        border-bottom-color: rgb(255, 0, 0);
+        border-left-color: rgb(255, 0, 0);
+    }
+    100% {
+        border-top-color: rgba(159, 159, 196, 0);
+        border-right-color: rgba(159, 159, 196, 0);
+        border-bottom-color: rgba(0, 255, 0, 0);
+        border-left-color: rgba(159, 159, 196, 0);
+    }
+}
+@keyframes blinkingBorderStand {
+    0% {
+        border-top-color: rgb(68, 241, 0);
+        border-right-color: rgb(68, 241, 0);
+        border-bottom-color: rgb(68, 241, 0);
+        border-left-color: rgb(68, 241, 0);
+    }
+    100% {
+        border-top-color: rgba(159, 159, 196, 0);
+        border-right-color: rgba(159, 159, 196, 0);
+        border-bottom-color: rgba(0, 255, 0, 0);
+        border-left-color: rgba(159, 159, 196, 0);
+    }
+}
+@keyframes blinkingBorderRestart {
+    0% {
+        border-top-color: rgb(0, 0, 0);
+        border-right-color: rgb(0, 0, 0);
+        border-bottom-color: rgb(0, 0, 0);
+        border-left-color: rgb(0, 0, 0);
     }
     100% {
         border-top-color: rgba(159, 159, 196, 0);

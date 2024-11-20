@@ -90,7 +90,7 @@ function startGame() {
     playerStartCards();
     dealerStartCards();
     checkForTie();
-    startButton.disabled = true
+    removeDealButton();
 }
 function playerStartCards(){
     let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
@@ -201,9 +201,9 @@ function restartGame(){
     cardOutputPlayer.innerHTML = "";
     imageResetDealer.innerHTML = "";
     imageResetPlayer.innerHTML = "";
-    startButton.disabled = false;
     hitButton.disabled = false;
     standButton.disabled = false;
+    startButton.style.display = "";
     
 }
 function checkForTie(){
@@ -229,4 +229,6 @@ function checkForAce(handTotal, aceCount) {
     }
     return handTotal;
 }
-
+function removeDealButton() {
+    startButton.style.display = "none";
+}
