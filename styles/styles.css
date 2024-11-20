@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 body{
     justify-content: center;
     align-items: center;
@@ -8,36 +11,95 @@ body{
 #topSection{
     height: auto;
     padding: 50px;
-    background-color: rgba(255, 0, 0, 0.199);
 }
-.row{
+.row {
     display: flex;
-    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /*stacks the rows */
 }
-button{
-    width: 10px;
+button {
     cursor: pointer;
+    height: 50px; 
 }
-button, span{
+#playButton {
+    flex: none;
+    display: inline-block;
+    color: white;
+    background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 96%, rgba(90,90,201,1) 100%);
+    border: 5px solid rgba(0, 0, 0, 0.253);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+    letter-spacing: 0.1em;
+    transition: 0.5s;
+}
+#playButton:hover{
+    background: radial-gradient(circle, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 96%, rgba(90,90,201,1) 100%);
+    letter-spacing: 0.10em;
+    text-shadow: 3px 3px 3px #000000;
+    box-shadow: 0 0 30px rgb(90, 90, 201);
+    animation: blinkingBorder 1.5s linear infinite;
+}
+#hitButton {
+    flex: none;
+    display: inline-block;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px; /* Match width for a perfect circle */
+    box-sizing: border-box;
+}
+#standButton {
+    flex: none;
+    display: inline-block;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px; /* Match width for a perfect circle */
+    box-sizing: border-box;
+}
+.dealer{
+    width: 50%;
+    margin: auto;
+}
+.player{
+    width: 50%;
+    margin: auto;
+}
+span{
     flex: 1 1 100px;
     height: 50px;
-    border:1px solid black;
 }
 #dealerSection{
     height: auto;
+    color: white;
     padding: 50px;
-    background-color: rgba(11, 236, 67, 0.219);
 }
 #playerSection{
     height: auto;
+    color: white;
     padding: 50px;
-    background-color: rgba(247, 0, 255, 0.185);
 }
 #bottomSection{
     height: auto;
     padding: 50px;
-    background-color: rgba(0, 225, 255, 0.212);
 }
-button{
-    width: 50px;
+/*Animations*/
+@keyframes blinkingBorder {
+    0% {
+        border-top-color: rgb(143, 143, 194);
+        border-right-color: rgb(133, 133, 190);
+        border-bottom-color: rgb(139, 139, 189);
+        border-left-color: rgb(141, 141, 194);
+    }
+    100% {
+        border-top-color: rgba(159, 159, 196, 0);
+        border-right-color: rgba(159, 159, 196, 0);
+        border-bottom-color: rgba(0, 255, 0, 0);
+        border-left-color: rgba(159, 159, 196, 0);
+    }
 }
