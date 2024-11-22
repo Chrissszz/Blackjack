@@ -1,5 +1,5 @@
 //Hearts
-let cardAceHearts = [1, "Ace", "Hearts", "images/cards/hearts/hearts_A.png"];
+let cardAceHearts = [11, "Ace", "Hearts", "images/cards/hearts/hearts_A.png"];
 let cardTwoHearts = [2, "Two", "Hearts", "images/cards/hearts/hearts_2.png"];
 let cardThreeHearts = [3, "Three", "Hearts", "images/cards/hearts/hearts_3.png"];
 let cardFourHearts = [4, "Four", "Hearts", "images/cards/hearts/hearts_4.png"];
@@ -93,21 +93,28 @@ function startGame() {
     removeDealButton();
 }
 function playerStartCards(){
-    let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
-    let randomCardTwo = allCards[Math.floor(Math.random()*allCards.length)];
+    const getRandomCard = selectRandomWithoutRepetition(allCards);
+    let randomCard = getRandomCard()
+    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    console.log(allCards)
+    let getRandomCardTwo = selectRandomWithoutRepetition(allCards);
+    let randomCardTwo = getRandomCardTwo()
+    //let randomCardTwo = allCards[Math.floor(Math.random()*allCards.length)];
+    console.log(allCards);
+    
     playerCount += randomCard[0];
     playerCount += randomCardTwo[0];
     playerOutput.innerHTML = playerCount;
-    if (randomCard[1] === "Ace" || randomCardTwo[2] === "Ace") {
-        playerAceCount++;
-    }
-    playerCount = checkForAce(playerCount, playerAceCount);
+    
+    playerCount = checkForAce(playerCount, randomCard[1]);
+    playerCount = checkForAce(playerCount, randomCardTwo[1]);
+    playerOutput.innerHTML = playerCount;
     cardOutputPlayer.innerHTML = `${randomCard[1]} of ${randomCard[2]}` + `, ${randomCardTwo[1]} of ${randomCardTwo[2]}`;
     
     let cardImage = new Image();
     cardImage.src = randomCard[3]
     document.querySelector('.cardDisplayImagePlayer').appendChild(cardImage);
-    
+    console.log(randomCard[1],randomCardTwo[1])
     
     let cardImageTwo = new Image()
     cardImageTwo.src = randomCardTwo[3]
@@ -119,15 +126,22 @@ function playerStartCards(){
     }
 }
 function dealerStartCards(){
-    let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
-    let randomCardTwo = allCards[Math.floor(Math.random()*allCards.length)];
+    const getRandomCard = selectRandomWithoutRepetition(allCards);
+    let randomCard = getRandomCard()
+    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    console.log(allCards)
+    let getRandomCardTwo = selectRandomWithoutRepetition(allCards);
+    let randomCardTwo = getRandomCardTwo()
+    //let randomCardTwo = allCards[Math.floor(Math.random()*allCards.length)];
+    console.log(allCards);
     dealerCount += randomCard[0];
     dealerCount += randomCardTwo[0];
     dealerOutput.innerHTML = dealerCount;
-    if (randomCard[1] === "Ace" || randomCardTwo[2] === "Ace") {
-        dealerAceCount++;
-    }
-    dealerCount = checkForAce(dealerCount, dealerAceCount);
+
+    dealerCount = checkForAce(dealerCount, randomCard[1]);
+    dealerCount = checkForAce(dealerCount, randomCardTwo[1]);
+    dealerOutput.innerHTML = dealerCount;
+
     cardOutputDealer.innerHTML = `${randomCard[1]} of ${randomCard[2]}` + `, ${randomCardTwo[1]} of ${randomCardTwo[2]}`;
     
     let cardImage = new Image();
@@ -145,46 +159,54 @@ function dealerStartCards(){
     }
 }
 function cardCount() {
-     let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    const getRandomCard = selectRandomWithoutRepetition(allCards);
+    let randomCard = getRandomCard()
+    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    console.log(allCards)
         playerCount += randomCard[0];   
         playerOutput.innerHTML = playerCount;
         cardOutputPlayer.innerHTML += `, ${randomCard[1]} of ${randomCard[2]}`;
-        if (randomCard[1] === "Ace") {
-            playerAceCount++;
-        }
-        playerCount = checkForAce(playerCount, playerAceCount);
-       
+        
+        playerCount = checkForAce(playerCount, randomCard[1]);
+        playerOutput.innerHTML = playerCount;
+        console.log(playerCount)
+
         let cardImage = new Image();
         cardImage.src = randomCard[3]
         document.querySelector('.cardDisplayImagePlayer').appendChild(cardImage);
 
     if(playerCount === 21){
-        playerOutcome.innerHTML = "You win!";
+        playerOutCome(true);
         endGame();
     }else if(playerCount > 21) {
-        playerOutcome.innerHTML = "Bust!"
+        playerOutCome(false);
         endGame();
     };
 }
 function standCount() {
-    let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    const getRandomCard = selectRandomWithoutRepetition(allCards);
+    let randomCard = getRandomCard()
+    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    console.log(allCards)
         dealerCount += randomCard[0]; 
         dealerOutput.innerHTML = dealerCount;
         cardOutputDealer.innerHTML += `, ${randomCard[1]} of ${randomCard[2]}`;
-        if (randomCard[1] === "Ace") {
-            dealerAceCount++;
-        }
-        dealerCount = checkForAce(dealerCount, dealerAceCount);
+        
+        dealerCount = checkForAce(dealerCount, randomCard[1]);
+        dealerOutput.innerHTML = dealerCount;
+        console.log(randomCard[1])
+        console.log(dealerCount)
+        
 
         let cardImage = new Image();
         cardImage.src = randomCard[3]
         document.querySelector('.cardDisplayImageDealer').appendChild(cardImage);
 
         if(dealerCount === 21){
-            dealerOutcome.innerHTML = "You win!";
+            playerOutCome(false);
             endGame();
         }else if(dealerCount > 21) {
-            dealerOutcome.innerHTML = "Bust!";
+            playerOutCome(true);
             endGame();
         };
 }
@@ -222,13 +244,44 @@ function endGame() {
         return
     }
 }
-function checkForAce(handTotal, aceCount) {
-    while (handTotal > 21 && aceCount > 0) {
-        handTotal -= 10;
-        aceCount--;
-    }
-    return handTotal;
+function checkForAce(totalHand, cardAce) {
+    while(totalHand > 21 && cardAce === "Ace" ){
+        totalHand -= 10;
+    } 
+    return totalHand;
 }
 function removeDealButton() {
     startButton.style.display = "none";
+}
+function playerOutCome(isWin) {
+    // Create backdrop element  
+    const backdrop = document.createElement('div');
+    backdrop.className = 'backdrop';
+
+    // Create modal element
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+
+    // Check if player wins with isWin, otherwise display "You lose!"
+    modal.textContent = isWin ? "You win!" : "You lose!";
+
+    // Append modal to the backdrop
+    backdrop.appendChild(modal);
+
+    // Append the backdrop to the document body
+    document.body.appendChild(backdrop);
+
+    // Add a click event to close the modal
+    backdrop.addEventListener('click', () => {
+        document.body.removeChild(backdrop);
+    });
+}
+function selectRandomWithoutRepetition(array) {
+    return function () {
+        if (array.length === 0) {
+            return null; // No more objects to select
+        }
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array.splice(randomIndex, 1)[0]; // Remove and return the object
+    };
 }

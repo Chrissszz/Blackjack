@@ -4,12 +4,14 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    max-height: 95vh;
     background-image: url('/images/background/171.jpg');
   }
 #topSection{
     height: auto;
     padding: 50px;
+    padding-top: 0;
+    padding-bottom: 25px;
 }
 button{
     flex: none;
@@ -83,10 +85,12 @@ button{
 .cardDisplayPlayer{
     font-family: "Righteous", serif;
     font-size: 1.5em;
+    margin-bottom: 0;
 }
 .cardDisplayDealer{
     font-family: "Righteous", serif;
     font-size: 1.5em;
+    margin-bottom: 0;
 }
 .playerCount{
     font-family: "Righteous", serif;
@@ -135,7 +139,7 @@ span{
     display: flex;
     height: auto;
     justify-content: center;
-    padding-top: 50px; 
+    padding-top: 25px; 
 }
 .row{
     flex: 1;
@@ -145,7 +149,36 @@ span{
 img{
     width: 125px;
 }
+/*Modal*/
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
 
+/* Make backdrop visible */
+.backdrop.show {
+    visibility: visible;
+    opacity: 1; /* Fully opaque */
+}
+
+/* Modal content */
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    z-index: 1001; /* Ensure it's above the backdrop */
+}
 /*Animations*/
 @keyframes blinkingBorder {
     0% {
