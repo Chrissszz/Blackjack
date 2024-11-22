@@ -121,8 +121,9 @@ function playerStartCards(){
     document.querySelector('.cardDisplayImagePlayer').appendChild(cardImageTwo);
 
     if(playerCount === 21){
-        playerOutcome.innerHTML = "Blackjack!";
+        playerOutCome();
         endGame();
+        modalBlackjackWin();
     }
 }
 function dealerStartCards(){
@@ -154,7 +155,7 @@ function dealerStartCards(){
     document.querySelector('.cardDisplayImageDealer').appendChild(cardImageTwo);
 
     if(dealerCount === 21){
-        dealerOutcome.innerHTML = "Blackjack!";
+        modalBlackjackWin();
         endGame();
     }
 }
@@ -178,6 +179,7 @@ function cardCount() {
     if(playerCount === 21){
         playerOutCome(true);
         endGame();
+        modalWinColor();
     }else if(playerCount > 21) {
         playerOutCome(false);
         endGame();
@@ -208,6 +210,7 @@ function standCount() {
         }else if(dealerCount > 21) {
             playerOutCome(true);
             endGame();
+            modalWinColor();
         };
 }
 function restartGame(){
@@ -265,22 +268,56 @@ function playerOutCome(isWin) {
     // Check if player wins with isWin, otherwise display "You lose!"
     modal.textContent = isWin ? "You win!" : "You lose!";
 
+    // Set initial styles for fade-in and make elements unclickable
+    backdrop.style.opacity = '0';
+    modal.style.opacity = '0';
+    modal.style.transition = 'opacity 1s ease-in-out'; // Fade-in effect
+    backdrop.style.pointerEvents = 'none'; // Disable click events initially
+
     // Append modal to the backdrop
     backdrop.appendChild(modal);
 
     // Append the backdrop to the document body
     document.body.appendChild(backdrop);
 
-    // Add a click event to close the modal
+    // Trigger the fade-in after a very short delay
+    setTimeout(() => {
+        backdrop.style.transition = 'opacity 1s ease-in-out';
+        backdrop.style.opacity = '1';
+        modal.style.opacity = '1';
+    }, 0); // 0ms delay for near-instant fade-in
+
+    // Enable clicking after the fade-in is done (when opacity reaches 1)
+    setTimeout(() => {
+        backdrop.style.pointerEvents = 'all'; // Enable click events after fade-in
+    }, 1000); // Match this timeout to the fade-in duration (1s)
+
+    // Add a click event to close the modal with fade-out effect
     backdrop.addEventListener('click', () => {
-        document.body.removeChild(backdrop);
+        backdrop.style.opacity = '0';
+        modal.style.opacity = '0';
+
+        // Wait for the fade-out transition to finish before removing the element
+        setTimeout(() => {
+            document.body.removeChild(backdrop);
+        }, 1000); // Match this timeout to the duration of the fade-out (1s)
     });
+}
+
+
+function modalWinColor(){
+    let modalBackground = document.getElementsByClassName('modal')[0];
+    modalBackground.style.backgroundColor = '#28a745';
+}
+function modalBlackjackWin(){
+    let modal = document.getElementsByClassName('modal')[0];
+    modal.style.backgroundColor = '#FFD700';
+    modal.textContent = "Blackjack!";
+    modal.style.color = '#333333';
+    modal.style.animation = 'textGrowAndGlow 1s infinite ease-in-out';
 }
 function selectRandomWithoutRepetition(array) {
     return function () {
-        if (array.length === 0) {
-            return null; // No more objects to select
-        }
         const randomIndex = Math.floor(Math.random() * array.length);
         return array.splice(randomIndex, 1)[0]; // Remove and return the object
     };

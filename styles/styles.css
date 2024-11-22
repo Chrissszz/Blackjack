@@ -168,15 +168,17 @@ img{
 
 /* Modal content */
 .modal {
+    font-family: "Righteous", serif;
+    font-size: 6em;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    color: #FFFFFF;
+    background-color: #B22222;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    font-size: 20px;
     z-index: 1001; /* Ensure it's above the backdrop */
 }
 /*Animations*/
@@ -235,4 +237,15 @@ img{
         border-bottom-color: rgba(0, 255, 0, 0);
         border-left-color: rgba(159, 159, 196, 0);
     }
+}
+@keyframes textGrowAndGlow {
+    0%, 100% { 
+        font-size: 6em;
+        box-shadow: 0 0 25px #FFD700, 0 0 45px #FFD700, 0 0 65px #FFD700; 
+    }  
+    50% { 
+        font-size: 4em; 
+        box-shadow: 0 0 10px #FFA500, 0 0 25px #FFA500, 0 0 35px #FFA500;
+    }    
+
 }
