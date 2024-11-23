@@ -10,43 +10,45 @@
     <title>Blackjack</title>
 </head>
 <body>
-    <section id="topSection">
-        <div class="row restart">
-            <button onclick="restartGame()" id="restartButton">Restart</button>
-        </div>
-    </section>
-    <section id="dealerSection">
-        <div class="row dealer">
-            <span>Dealer</span>
-        </div>
-        <div>
-            <p class="cardDisplayImageDealer"><p>
-            <p class="cardDisplayDealer"></p>
-            <span class="dealerCount"></span>
-            <p class="dealerOutcome"></p>
-        </div>
-    </section>
-    <section id="playerSection">
-        <div class="row player">
-            <span>Player</span>
-        </div>
-        <div>
-            <p class="cardDisplayImagePlayer"><p>
-            <p class="cardDisplayPlayer"></p>
-            <span class="playerCount"></span>
-            <p class="playerOutcome"></p>
-        </div>
-    </section>
-    <section id="bottomSection">
-        <div class="row hit">
-            <button onclick="cardCount()" id="hitButton">Hit</button>
-        </div>
-        <div class="row play">
-            <button onclick="startGame()" id="playButton">Deal</button>
-        </div>
-        <div class="row stand">
-            <button onclick="standCount()" id="standButton">Stand</button>
-        </div>
+    <section id="tableBackground">
+        <section id="topSection">
+            <div class="row restart">
+                <button onclick="restartGame()" id="restartButton">Restart</button>
+            </div>
+        </section>
+        <section id="dealerSection">
+            <div class="row dealer">
+                <span>Dealer</span>
+            </div>
+            <div>
+                <p class="cardDisplayImageDealer"><p>
+                <p class="cardDisplayDealer"></p>
+                <span class="dealerCount"></span>
+                <p class="dealerOutcome"></p>
+            </div>
+        </section>
+        <section id="playerSection">
+            <div class="row player">
+                <span>Player</span>
+            </div>
+            <div>
+                <p class="cardDisplayImagePlayer"><p>
+                <p class="cardDisplayPlayer"></p>
+                <span class="playerCount"></span>
+                <p class="playerOutcome"></p>
+            </div>
+        </section>
+        <section id="bottomSection">
+            <div class="row hit">
+                <button onclick="cardCount()" id="hitButton">Hit</button>
+            </div>
+            <div class="row play">
+                <button onclick="startGame()" id="playButton">Deal</button>
+            </div>
+            <div class="row stand">
+                <button onclick="standCount()" id="standButton">Stand</button>
+            </div>
+        </section>
     </section>
     <script src="/js/script.js"></script>
 </body>

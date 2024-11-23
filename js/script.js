@@ -95,11 +95,10 @@ function startGame() {
 function playerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
     console.log(allCards)
     let getRandomCardTwo = selectRandomWithoutRepetition(allCards);
     let randomCardTwo = getRandomCardTwo()
-    //let randomCardTwo = allCards[Math.floor(Math.random()*allCards.length)];
+   
     console.log(allCards);
     
     playerCount += randomCard[0];
@@ -129,11 +128,11 @@ function playerStartCards(){
 function dealerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
+    
     console.log(allCards)
     let getRandomCardTwo = selectRandomWithoutRepetition(allCards);
     let randomCardTwo = getRandomCardTwo()
-    //let randomCardTwo = allCards[Math.floor(Math.random()*allCards.length)];
+
     console.log(allCards);
     dealerCount += randomCard[0];
     dealerCount += randomCardTwo[0];
@@ -155,6 +154,7 @@ function dealerStartCards(){
     document.querySelector('.cardDisplayImageDealer').appendChild(cardImageTwo);
 
     if(dealerCount === 21){
+        playerOutCome();
         modalBlackjackWin();
         endGame();
     }
@@ -162,7 +162,6 @@ function dealerStartCards(){
 function cardCount() {
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
     console.log(allCards)
         playerCount += randomCard[0];   
         playerOutput.innerHTML = playerCount;
@@ -188,7 +187,6 @@ function cardCount() {
 function standCount() {
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    //let randomCard = allCards[Math.floor(Math.random()*allCards.length)];
     console.log(allCards)
         dealerCount += randomCard[0]; 
         dealerOutput.innerHTML = dealerCount;
@@ -218,6 +216,20 @@ function restartGame(){
     dealerCount = 0
     playerAceCount = 0;
     dealerAceCount = 0;
+    allCards = [
+        //Hearts
+        cardAceHearts, cardTwoHearts, cardThreeHearts, cardFourHearts, cardFiveHearts, cardSixHearts, cardSevenHearts,
+        cardEightHearts, cardNineHearts, cardTenHearts, cardJackHearts, cardQueenHearts, cardKingHearts,
+        //Diamonds
+        cardAceDiamonds, cardTwoDiamonds, cardThreeDiamonds, cardFourDiamonds, cardFiveDiamonds, cardSixDiamonds, cardSevenDiamonds,
+        cardEightDiamonds, cardNineDiamonds, cardTenDiamonds, cardJackDiamonds, cardQueenDiamonds, cardKingDiamonds,
+        //Clubs
+        cardAceClubs, cardTwoClubs, cardThreeClubs, cardFourClubs, cardFiveClubs, cardSixClubs, cardSevenClubs,
+        cardEightClubs, cardNineClubs, cardTenClubs, cardJackClubs, cardQueenClubs, cardKingClubs,
+        //Spades
+        cardAceSpades, cardTwoSpades, cardThreeSpades, cardFourSpades, cardFiveSpades, cardSixSpades, cardSevenSpades,
+        cardEightSpades, cardNineSpades, cardTenSpades, cardJackSpades, cardQueenSpades, cardKingSpades
+        ];
     dealerOutput.innerHTML = "";
     playerOutput.innerHTML = "";
     playerOutcome.innerHTML = "";
