@@ -69,7 +69,6 @@ let allCards = [
     cardAceSpades, cardTwoSpades, cardThreeSpades, cardFourSpades, cardFiveSpades, cardSixSpades, cardSevenSpades,
     cardEightSpades, cardNineSpades, cardTenSpades, cardJackSpades, cardQueenSpades, cardKingSpades
 ];
-
 let playerCount = 0;
 let dealerCount = 0
 let playerAceCount = 0;
@@ -85,12 +84,17 @@ let playerOutcome = document.querySelector('.playerOutcome');
 let dealerOutcome = document.querySelector('.dealerOutcome');
 let imageResetDealer = document.querySelector('.cardDisplayImageDealer');
 let imageResetPlayer = document.querySelector('.cardDisplayImagePlayer');
+let chipDisplaySection = document.querySelector('#chipDisplay');
+hideButtons() 
 
 function startGame() {
     playerStartCards();
     dealerStartCards();
     checkForTie();
     removeDealButton();
+    hitButton.style.display = 'inline-block';
+    standButton.style.display = 'inline-block';
+    chipDisplaySection.style.display = 'none';
 }
 function playerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
@@ -212,6 +216,7 @@ function standCount() {
         };
 }
 function restartGame(){
+    hideButtons()
     playerCount = 0
     dealerCount = 0
     playerAceCount = 0;
@@ -241,7 +246,9 @@ function restartGame(){
     hitButton.disabled = false;
     standButton.disabled = false;
     startButton.style.display = "";
-    
+    chipDisplaySection.style.display = 'block';
+
+
 }
 function checkForTie(){
     if(dealerCount === 21 && playerCount === 21){
@@ -333,4 +340,8 @@ function selectRandomWithoutRepetition(array) {
         const randomIndex = Math.floor(Math.random() * array.length);
         return array.splice(randomIndex, 1)[0]; // Remove and return the object
     };
+}
+function hideButtons() {
+    hitButton.style.display = 'none';
+    standButton.style.display = 'none';
 }
