@@ -99,11 +99,11 @@ function startGame() {
 function playerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    console.log(allCards)
+   
     let getRandomCardTwo = selectRandomWithoutRepetition(allCards);
     let randomCardTwo = getRandomCardTwo()
    
-    console.log(allCards);
+   
     
     playerCount += randomCard[0];
     playerCount += randomCardTwo[0];
@@ -117,7 +117,7 @@ function playerStartCards(){
     let cardImage = new Image();
     cardImage.src = randomCard[3]
     document.querySelector('.cardDisplayImagePlayer').appendChild(cardImage);
-    console.log(randomCard[1],randomCardTwo[1])
+    
     
     let cardImageTwo = new Image()
     cardImageTwo.src = randomCardTwo[3]
@@ -133,11 +133,11 @@ function dealerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
     
-    console.log(allCards)
+
     let getRandomCardTwo = selectRandomWithoutRepetition(allCards);
     let randomCardTwo = getRandomCardTwo()
 
-    console.log(allCards);
+    
     dealerCount += randomCard[0];
     dealerCount += randomCardTwo[0];
     dealerOutput.innerHTML = dealerCount;
@@ -166,14 +166,14 @@ function dealerStartCards(){
 function cardCount() {
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    console.log(allCards)
+  
         playerCount += randomCard[0];   
         playerOutput.innerHTML = playerCount;
         cardOutputPlayer.innerHTML += `, ${randomCard[1]} of ${randomCard[2]}`;
         
         playerCount = checkForAce(playerCount, randomCard[1]);
         playerOutput.innerHTML = playerCount;
-        console.log(playerCount)
+        
 
         let cardImage = new Image();
         cardImage.src = randomCard[3]
@@ -191,15 +191,13 @@ function cardCount() {
 function standCount() {
     const getRandomCard = selectRandomWithoutRepetition(allCards);
     let randomCard = getRandomCard()
-    console.log(allCards)
         dealerCount += randomCard[0]; 
         dealerOutput.innerHTML = dealerCount;
         cardOutputDealer.innerHTML += `, ${randomCard[1]} of ${randomCard[2]}`;
         
         dealerCount = checkForAce(dealerCount, randomCard[1]);
         dealerOutput.innerHTML = dealerCount;
-        console.log(randomCard[1])
-        console.log(dealerCount)
+
         
 
         let cardImage = new Image();
@@ -217,6 +215,7 @@ function standCount() {
 }
 function restartGame(){
     hideButtons()
+    reloadChipDisplay()
     playerCount = 0
     dealerCount = 0
     playerAceCount = 0;
@@ -345,3 +344,17 @@ function hideButtons() {
     hitButton.style.display = 'none';
     standButton.style.display = 'none';
 }
+//Reload entire chip section
+function reloadChipDisplay() {
+    $('#chipDisplay').load('chipContent.html #chipDisplay', function(response, status, xhr) {
+        if (status === 'success') {
+            console.log('Content reloaded successfully!');
+            initializeFunctions(); // Reapply all functions
+        } else {
+            console.error('Error reloading content:', xhr.status, xhr.statusText);
+        }
+    });
+}
+
+
+

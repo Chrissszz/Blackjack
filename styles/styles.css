@@ -4,7 +4,7 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
-    max-height: 95vh;
+    max-height: 90vh;
     background-image: url('/images/background/171.jpg');
   }
 #tableBackground{
@@ -163,7 +163,7 @@ span{
     align-content: space-between;
 }
 img{
-    width: 125px;
+    width: 120px;
 }
 /*Modal*/
 .backdrop {
