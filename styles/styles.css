@@ -92,10 +92,8 @@ button{
     margin: auto;
 }
 .player{
-    font-family: "Righteous", sans-serif;
-    font-size: 3em;
-    width: 50%;
-    margin: auto;
+    
+    
 }
 .cardDisplayPlayer{
     font-family: "Righteous", serif;
@@ -239,6 +237,28 @@ img{
     margin-top: 0;
     margin-bottom: 0;
 }
+.betNumberDisplay {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Center items vertically */
+    position: relative;
+    font-family: "Righteous", sans-serif;
+    font-size: 3em;
+}
+
+.bet {
+    flex: 1; /* Pushes the player span to the center */
+    text-align: left; /* Align text to the left */
+    margin-left: 350px;
+}
+
+.playerPlayer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
 /*Animations*/
 @keyframes blinkingBorder {
     0% {

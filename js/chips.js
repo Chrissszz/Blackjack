@@ -3,7 +3,6 @@ const chips = document.querySelectorAll('.chip');
 const dropZone = document.getElementById('dropZone');
 const textZone = document.querySelector('.dropZoneText');
 const chipsArea = document.querySelector('.chips')
-let chipValueBetTotal = document.querySelector(".chipValueBet")
 let chipValueBetNumber = document.querySelector(".chipValueBetNumber")
 // Add drag events to chips
 chips.forEach(chip => {
@@ -90,7 +89,7 @@ function checkChipValue(chipId) {
         const newTotal = currentTotal + chipValue; // Add new chip value
         chipValueBetNumber.innerHTML = newTotal; // Update the div content
     } else {   
-        console.error('chipValueBetTotal element not found.');
+        console.error('Element not found.');
     }
 }
 //If chip is taken out
@@ -115,7 +114,7 @@ function checkChipValueReturn(chipId) {
         const newTotal = Math.max(0, currentTotal - chipValue) // Add new chip value
         chipValueBetNumber.innerHTML = newTotal; // Update the div content
     } else {   
-        console.error('chipValueBetTotal element not found.');
+        console.error('Element not found.');
     }
 }
 

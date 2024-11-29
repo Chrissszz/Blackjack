@@ -85,6 +85,7 @@ let dealerOutcome = document.querySelector('.dealerOutcome');
 let imageResetDealer = document.querySelector('.cardDisplayImageDealer');
 let imageResetPlayer = document.querySelector('.cardDisplayImagePlayer');
 let chipDisplaySection = document.querySelector('#chipDisplay');
+let betValue = document.querySelector('.bet')
 hideButtons() 
 
 function startGame() {
@@ -95,6 +96,7 @@ function startGame() {
     hitButton.style.display = 'inline-block';
     standButton.style.display = 'inline-block';
     chipDisplaySection.style.display = 'none';
+    betValue.innerHTML = `Bet: ${chipValueBetNumber.innerHTML}`;
 }
 function playerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
@@ -246,6 +248,7 @@ function restartGame(){
     standButton.disabled = false;
     startButton.style.display = "";
     chipDisplaySection.style.display = 'block';
+    betValue.innerHTML = "";
 
 
 }
@@ -344,14 +347,13 @@ function hideButtons() {
     hitButton.style.display = 'none';
     standButton.style.display = 'none';
 }
-//Reload entire chip section
+//Reload entire chip section using Jquery(AJAX)
 function reloadChipDisplay() {
-    $('#chipDisplay').load('chipContent.html #chipDisplay', function(response, status, xhr) {
+    $('#chipDisplay').load('chipContent.html #chipDisplay', function(response, status) {
         if (status === 'success') {
-            console.log('Content reloaded successfully!');
             initializeFunctions(); // Reapply all functions
         } else {
-            console.error('Error reloading content:', xhr.status, xhr.statusText);
+            console.error('Error reloading content:', status);
         }
     });
 }
