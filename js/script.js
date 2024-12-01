@@ -73,6 +73,7 @@ let playerCount = 0;
 let dealerCount = 0
 let playerAceCount = 0;
 let dealerAceCount = 0;
+let betMoney = 0
 let dealerOutput = document.querySelector('.dealerCount');
 let playerOutput = document.querySelector('.playerCount');
 let cardOutputDealer = document.querySelector('.cardDisplayDealer')
@@ -86,7 +87,12 @@ let imageResetDealer = document.querySelector('.cardDisplayImageDealer');
 let imageResetPlayer = document.querySelector('.cardDisplayImagePlayer');
 let chipDisplaySection = document.querySelector('#chipDisplay');
 let betValue = document.querySelector('.bet')
-hideButtons() 
+let bankrollSelector = document.querySelector(".bankrollAmount");
+let bankroll = 0
+hideButtons();
+addBankrollStorage();
+
+
 
 function startGame() {
     playerStartCards();
@@ -96,7 +102,14 @@ function startGame() {
     hitButton.style.display = 'inline-block';
     standButton.style.display = 'inline-block';
     chipDisplaySection.style.display = 'none';
-    betValue.innerHTML = `Bet: ${chipValueBetNumber.innerHTML}`;
+    
+    betValue.innerHTML = `Bet: ${Number(chipValueBetNumber.innerHTML)}`;
+    console.log(betValue)
+    console.log(chipValueBetNumber)
+    bankroll -= Number(chipValueBetNumber.innerHTML);
+    bankrollSelector.innerHTML = bankroll;
+    localStorage.setItem('bankroll', bankroll);
+    
 }
 function playerStartCards(){
     const getRandomCard = selectRandomWithoutRepetition(allCards);
@@ -129,6 +142,10 @@ function playerStartCards(){
         playerOutCome();
         endGame();
         modalBlackjackWin();
+            betAmount = betValue.innerHTML = `Bet: ${Number(chipValueBetNumber.innerHTML) * 2}`;
+            bankroll += Number(chipValueBetNumber.innerHTML) * 2;
+            bankrollSelector.innerHTML = bankroll
+            localStorage.setItem('bankroll', bankroll); 
     }
 }
 function dealerStartCards(){
@@ -185,6 +202,10 @@ function cardCount() {
         playerOutCome(true);
         endGame();
         modalWinColor();
+            betAmount = betValue.innerHTML = `Bet: ${Number(chipValueBetNumber.innerHTML) * 2}`;
+            bankroll += Number(chipValueBetNumber.innerHTML) * 2;
+            bankrollSelector.innerHTML = bankroll 
+            localStorage.setItem('bankroll', bankroll);
     }else if(playerCount > 21) {
         playerOutCome(false);
         endGame();
@@ -213,11 +234,16 @@ function standCount() {
             playerOutCome(true);
             endGame();
             modalWinColor();
+            betAmount = betValue.innerHTML = `Bet: ${Number(chipValueBetNumber.innerHTML) * 2}`;
+            bankroll += Number(chipValueBetNumber.innerHTML) * 2;
+            bankrollSelector.innerHTML = bankroll
+            localStorage.setItem('bankroll', bankroll); 
+            
         };
 }
 function restartGame(){
-    hideButtons()
-    reloadChipDisplay()
+    hideButtons();
+    location.reload();
     playerCount = 0
     dealerCount = 0
     playerAceCount = 0;
@@ -248,9 +274,6 @@ function restartGame(){
     standButton.disabled = false;
     startButton.style.display = "";
     chipDisplaySection.style.display = 'block';
-    betValue.innerHTML = "";
-
-
 }
 function checkForTie(){
     if(dealerCount === 21 && playerCount === 21){
@@ -347,16 +370,15 @@ function hideButtons() {
     hitButton.style.display = 'none';
     standButton.style.display = 'none';
 }
-//Reload entire chip section using Jquery(AJAX)
-function reloadChipDisplay() {
-    $('#chipDisplay').load('chipContent.html #chipDisplay', function(response, status) {
-        if (status === 'success') {
-            initializeFunctions(); // Reapply all functions
-        } else {
-            console.error('Error reloading content:', status);
-        }
-    });
+
+function addBankrollStorage() {
+    let bankrollStorageAmount = localStorage.getItem('bankroll');
+    if (bankrollStorageAmount) {
+        bankroll = Number(bankrollStorageAmount); // Use stored value
+    } else {
+        bankroll = 5000; // Default value for a new game
+        localStorage.setItem('bankroll', bankroll); // Store the initial bankroll
+    }
+    bankrollSelector.innerHTML = bankroll;
 }
-
-
 

@@ -249,7 +249,7 @@ img{
 .bet {
     flex: 1; /* Pushes the player span to the center */
     text-align: left; /* Align text to the left */
-    margin-left: 350px;
+    margin-left: 475px;
 }
 
 .playerPlayer {
@@ -257,6 +257,15 @@ img{
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+}
+.bankroll {
+    font-family: "Righteous", sans-serif;
+    font-size: 3em;
+    color: white;
+    position: absolute;
+    left: 400px;
+    top: 300px;
+
 }
 
 /*Animations*/

@@ -10,8 +10,42 @@
     <title>Blackjack</title>
 </head>
 <body>
+    <section id="dealerSection">
+        <div class="row dealer">
+            <span>Dealer</span>
+        </div>
+        <div>
+            <p class="cardDisplayImageDealer"><p>
+            <p class="cardDisplayDealer"></p>
+            <span class="dealerCount"></span>
+            <p class="dealerOutcome"></p>
+        </div>
+    </section>
+    <section id="playerSection">
+        <div class="betNumberDisplay">
+            <span class="bet"></span>
+            <span class="playerPlayer">Player</span>
+        </div>
+        <div>
+            <p class="cardDisplayImagePlayer"><p>
+            <p class="cardDisplayPlayer"></p>
+            <span class="playerCount"></span>
+            <p class="playerOutcome"></p>
+        </div>
+    </section>
+    <section id="bottomSection">
+        <div class="row hit">
+            <button onclick="cardCount()" id="hitButton">Hit</button>
+        </div>
+        <div class="row play">
+            <button onclick="startGame()" id="playButton">Deal</button>
+        </div>
+        <div class="row stand">
+            <button onclick="standCount()" id="standButton">Stand</button>
+        </div>
+    </section>
     <section id="chipDisplay">
-        <p class="chipValueBet">Total Bet: <span class="chipValueBetNumber">0</span></p>
+        <p class="chipValueBet">Total Bet: <span class="chipValueBetNumber secondBetNumber">0</span></p>
         <div class="row chips">
             <p></p>
             <img  src="images/chips/fivechip.png" draggable="true" class="chip" id="chip2">
