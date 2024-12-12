@@ -47,12 +47,15 @@
             <div class="row play">
                 <button onclick="startGame()" id="playButton">Deal</button>
             </div>
+            <div class="row">
+                <button onclick="allIn()" id="allInButton">All in!</button>
+            </div>
             <div class="row stand">
                 <button onclick="standCount()" id="standButton">Stand</button>
             </div>
         </section>
         <section id="chipDisplay">
-            <p class="chipValueBet">Total Bet: <span class="chipValueBetNumber secondBetNumber">0</span></p>
+            <p class="chipValueBet">Total Bet: $<span class="chipValueBetNumber secondBetNumber">0</span></p>
             <div class="row chips">
                 <p></p>
                 <img  src="images/chips/fivechip.png" draggable="true" class="chip" id="chip2">

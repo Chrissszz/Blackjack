@@ -5,6 +5,7 @@ const textZone = document.querySelector('.dropZoneText');
 const chipsArea = document.querySelector('.chips')
 let chipValueBetNumber = document.querySelector(".chipValueBetNumber")
 let betNumberReset = document.querySelector('.bet')
+let wentAllIn = 0
 // Add drag events to chips
 chips.forEach(chip => {
     chip.addEventListener('dragstart', (event) => {
@@ -38,7 +39,6 @@ dropZone.addEventListener('drop', (event) => {
     if (chip) {
         dropZone.appendChild(chip);
         checkChipValue(chipId)
-        
     }
     
 });
@@ -68,7 +68,6 @@ chipsArea.addEventListener('drop', (event) => {
     }
 });
 
-
 function checkChipValue(chipId) {
     let chipValue = 0;
 
@@ -90,7 +89,7 @@ function checkChipValue(chipId) {
         const newTotal = currentTotal + chipValue; // Add new chip value
         chipValueBetNumber.innerHTML = newTotal; // Update the div content
     } else {   
-        console.error('Element not found.');
+
     }
 }
 //If chip is taken out
@@ -117,4 +116,18 @@ function checkChipValueReturn(chipId) {
     } else {   
         console.error('Element not found.');
     }
+}
+function allIn() {
+    if(wentAllIn === 0){
+        chipValueBetNumber.innerHTML = bankrollSelector.innerHTML;
+        bankrollSelector.innerHTML = "0"
+        wentAllIn += 1
+    }else{
+        bankrollSelector.innerHTML = chipValueBetNumber.innerHTML;
+        chipValueBetNumber.innerHTML = "0"
+        wentAllIn = 0
+    }
+    console.log(chipValueBetNumber)
+    console.log(bankrollSelector)
+    console.log(wentAllIn)
 }

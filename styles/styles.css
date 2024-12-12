@@ -85,15 +85,25 @@ button{
     box-shadow: 0 0 30px rgb(68, 241, 0);
     animation: blinkingBorderStand 1.5s linear infinite;
 }
+#allInButton {
+    background: radial-gradient(circle, rgb(255, 0, 0), rgb(255, 238, 0), rgb(0, 238, 255));
+    font-size: 1.55em;
+    letter-spacing: normal;
+    background-size: 200% 200%; /* Enlarged gradient for smooth animation */
+    box-shadow: 0 0 10px rgb(251, 255, 0);
+}
+
+#allInButton:hover {
+    letter-spacing: 0.15em;
+    text-shadow: 3px 3px 3px #000000;
+    box-shadow: 0 0 30px rgb(251, 255, 0);
+    animation: dynamicColorChanging 3s infinite, blinkingBorderAllIn .5s linear infinite;
+}
 .dealer{
     font-family: "Righteous", sans-serif;
     font-size: 3em;
     width: 50%;
     margin: auto;
-}
-.player{
-    
-    
 }
 .cardDisplayPlayer{
     font-family: "Righteous", serif;
@@ -323,6 +333,28 @@ img{
         border-right-color: rgba(159, 159, 196, 0);
         border-bottom-color: rgba(0, 255, 0, 0);
         border-left-color: rgba(159, 159, 196, 0);
+    }
+}
+@keyframes dynamicColorChanging {
+    0% {
+        background: red;
+        background-position: 50% 50%;
+    }
+    25% {
+        background: lightblue;
+        background-position: 75% 25%;
+    }
+    50% {
+        background: greenyellow;
+        background-position: 25% 75%;
+    }
+    75% {
+        background: hotpink;
+        background-position: 50% 50%;
+    }
+    100% {
+        background: yellow;
+        background-position: 50% 50%;
     }
 }
 @keyframes textGrowAndGlow {

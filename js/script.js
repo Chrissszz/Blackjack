@@ -88,6 +88,7 @@ let imageResetPlayer = document.querySelector('.cardDisplayImagePlayer');
 let chipDisplaySection = document.querySelector('#chipDisplay');
 let betValue = document.querySelector('.bet')
 let bankrollSelector = document.querySelector(".bankrollAmount");
+let allInButton = document.querySelector("#allInButton")
 let bankroll = 0
 hideButtons();
 addBankrollStorage();
@@ -98,7 +99,8 @@ function startGame() {
     playerStartCards();
     dealerStartCards();
     checkForTie();
-    removeDealButton();
+    allInButton.style.display = "none";
+    startButton.style.display = "none";
     hitButton.style.display = 'inline-block';
     standButton.style.display = 'inline-block';
     chipDisplaySection.style.display = 'none';
@@ -296,9 +298,6 @@ function checkForAce(totalHand, cardAce) {
         totalHand -= 10;
     } 
     return totalHand;
-}
-function removeDealButton() {
-    startButton.style.display = "none";
 }
 function playerOutCome(isWin) {
     // Create backdrop element  
