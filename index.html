@@ -12,9 +12,18 @@
 <body>
     <section id="tableBackground">
         <section id="topSection">
+            <div id="scoreCounterContainer">
+                <div class="boxGrid">Dealer</div>
+                <div class="boxGrid">Player</div>
+                <div class="boxGrid dealerScore">0</div>
+                <div class="boxGrid playerScore">0</div>
+            </div>
             <div class="row restart">
                 <button onclick="restartGame()" id="restartButton">Restart</button>
                 <span class="bankroll">Bankroll: $<span class="bankrollAmount"></span></span>
+                <div class="row reset">
+                    <button onclick="resetBankRoll()" id="resetBankroll">Reset</button>
+                </div>
             </div>
         </section>
         <section id="dealerSection">

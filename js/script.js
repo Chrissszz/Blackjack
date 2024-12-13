@@ -88,10 +88,14 @@ let imageResetPlayer = document.querySelector('.cardDisplayImagePlayer');
 let chipDisplaySection = document.querySelector('#chipDisplay');
 let betValue = document.querySelector('.bet')
 let bankrollSelector = document.querySelector(".bankrollAmount");
-let allInButton = document.querySelector("#allInButton")
+let allInButton = document.querySelector("#allInButton");
+let resetBank = document.querySelector('.reset');
+let dealerScore = document.querySelector('.dealerScore');
+let playerScore = document.querySelector('.playerScore')
 let bankroll = 0
 hideButtons();
 addBankrollStorage();
+addScoreToStorage();
 
 
 
@@ -103,11 +107,10 @@ function startGame() {
     startButton.style.display = "none";
     hitButton.style.display = 'inline-block';
     standButton.style.display = 'inline-block';
+    resetBank.style.display = 'none';
     chipDisplaySection.style.display = 'none';
     
     betValue.innerHTML = `Bet: ${Number(chipValueBetNumber.innerHTML)}`;
-    console.log(betValue)
-    console.log(chipValueBetNumber)
     bankroll -= Number(chipValueBetNumber.innerHTML);
     bankrollSelector.innerHTML = bankroll;
     localStorage.setItem('bankroll', bankroll);
@@ -147,7 +150,9 @@ function playerStartCards(){
             betAmount = betValue.innerHTML = `Bet: ${Number(chipValueBetNumber.innerHTML) * 2}`;
             bankroll += Number(chipValueBetNumber.innerHTML) * 2;
             bankrollSelector.innerHTML = bankroll
-            localStorage.setItem('bankroll', bankroll); 
+            localStorage.setItem('bankroll', bankroll);
+            playerScore.innerHTML = Number(playerScore.innerHTML) + 1;
+            localStorage.setItem('playerScore', playerScore.innerHTML) 
     }
 }
 function dealerStartCards(){
@@ -182,6 +187,8 @@ function dealerStartCards(){
         playerOutCome();
         modalBlackjackWin();
         endGame();
+        dealerScore.innerHTML = Number(dealerScore.innerHTML) + 1;
+        localStorage.setItem('dealerScore', dealerScore.innerHTML)
     }
 }
 function cardCount() {
@@ -208,9 +215,14 @@ function cardCount() {
             bankroll += Number(chipValueBetNumber.innerHTML) * 2;
             bankrollSelector.innerHTML = bankroll 
             localStorage.setItem('bankroll', bankroll);
+            playerScore.innerHTML = Number(playerScore.innerHTML) + 1;
+            localStorage.setItem('playerScore', playerScore.innerHTML)
+
     }else if(playerCount > 21) {
         playerOutCome(false);
         endGame();
+        dealerScore.innerHTML = Number(dealerScore.innerHTML) +1;
+        localStorage.setItem('dealerScore', dealerScore.innerHTML)
     };
 }
 function standCount() {
@@ -232,6 +244,8 @@ function standCount() {
         if(dealerCount === 21){
             playerOutCome(false);
             endGame();
+            dealerScore.innerHTML = Number(dealerScore.innerHTML) +1;
+            localStorage.setItem('dealerScore', dealerScore.innerHTML)
         }else if(dealerCount > 21) {
             playerOutCome(true);
             endGame();
@@ -240,7 +254,8 @@ function standCount() {
             bankroll += Number(chipValueBetNumber.innerHTML) * 2;
             bankrollSelector.innerHTML = bankroll
             localStorage.setItem('bankroll', bankroll); 
-            
+            playerScore.innerHTML = Number(playerScore.innerHTML) + 1;
+            localStorage.setItem('playerScore', playerScore.innerHTML)
         };
 }
 function restartGame(){
@@ -381,3 +396,17 @@ function addBankrollStorage() {
     bankrollSelector.innerHTML = bankroll;
 }
 
+function addScoreToStorage() {
+    let displayPlayerScore = localStorage.getItem('playerScore')
+    localStorage.getItem('playerScore')
+    playerScore.innerHTML = displayPlayerScore
+    let displayDealerScore = localStorage.getItem('dealerScore')
+    localStorage.getItem('dealerScore')
+    dealerScore.innerHTML = displayDealerScore
+}
+
+function resetBankRoll() {
+    localStorage.clear()
+    bankrollSelector.innerHTML = "5000"
+
+}
