@@ -406,6 +406,7 @@ function addScoreToStorage() {
 
 function resetBankRoll() {
     localStorage.clear()
+    location.reload()
     bankrollSelector.innerHTML = "5000"
 
 }
