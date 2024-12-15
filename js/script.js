@@ -98,7 +98,6 @@ addBankrollStorage();
 addScoreToStorage();
 
 
-
 function startGame() {
     playerStartCards();
     dealerStartCards();
