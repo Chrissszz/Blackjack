@@ -93,6 +93,10 @@ let resetBank = document.querySelector('.reset');
 let dealerScore = document.querySelector('.dealerScore');
 let playerScore = document.querySelector('.playerScore')
 let bankroll = 0
+let playerName = document.querySelector('.playerName')
+let playerNameSecond = document.querySelector('.playerPlayer')
+
+checkForName();
 hideButtons();
 addBankrollStorage();
 addScoreToStorage();
@@ -409,4 +413,22 @@ function resetBankRoll() {
     location.reload()
     bankrollSelector.innerHTML = "5000"
 
+}
+function checkForName() {
+    let nameStorage = localStorage.getItem('playerName');
+    
+    if (nameStorage) {
+        playerName.innerHTML = nameStorage;
+        playerNameSecond.innerHTML = nameStorage;
+    } else {
+        let name = prompt("Please enter your name:");
+        if (name) {
+            // Save the name and display it
+            localStorage.setItem('playerName', name);
+            playerName.innerHTML = name;
+            playerNameSecond.innerHTML = name;
+        } else {
+            alert("You didn't enter a name.");
+        }
+    }
 }
