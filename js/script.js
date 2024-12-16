@@ -421,9 +421,8 @@ function checkForName() {
         playerName.innerHTML = nameStorage;
         playerNameSecond.innerHTML = nameStorage;
     } else {
-        let name = prompt("Please enter your name:");
+        let name = prompt("Please enter your name: (Maximum of 10 characters!)");
         if (name) {
-            // Save the name and display it
             localStorage.setItem('playerName', name);
             playerName.innerHTML = name;
             playerNameSecond.innerHTML = name;
